@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+
+        search
+
+{% endblock %}
+
+{% block title %}
+    search
+
+{% endblock %}
+
+{% block body %}
+ <div class="container mt-5">
+        <h2>Search Contacts by Country</h2>
+        <form method="GET" action="">
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <input type="text" class="form-control" id="country" name="q" placeholder="Enter country" value="{{ query }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        <h3 class="mt-5">Contacts</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+<!--                    <th>Sl no</th>-->
+                    <th>Name</th>
+                    <th>Website</th>
+                    <th>Email</th>
+                    <th>Tel No</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Town</th>
+                    <th>Country</th>
+                    <th>Technology</th>
+                    <th>Contact Person</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+<!--                        <td>{{ contact.id }}</td>-->
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.website }}</td>
+                        <td>{{ contact.email_id }}</td>
+                        <td>{{ contact.tel_no }}</td>
+                        <td>{{ contact.address }}<br>
+                          <br>
+                          {{ contact.address2}}</td>
+                        <td>{{ contact.city }}</td>
+                        <td>{{ contact.town }}</td>
+                        <td>{{ contact.country }}</td>
+                        <td>{{ contact.technology }}<br>
+                          {{ contact.technology_2}}</td>
+                        <td>{{ contact.contact_person }}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
